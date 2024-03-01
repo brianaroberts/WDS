@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <StartupObject>WDS.Program</StartupObject>
+    <OutputType>Exe</OutputType>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Settings\Documentation\apiKeys.json" />
+    <Content Remove="Settings\Documentation\Application.json" />
+    <Content Remove="Settings\Documentation\Connections.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Settings\Documentation\Application.json" />
+    <None Include="Settings\Documentation\apiKeys.json" />
+    <None Include="Settings\Documentation\Connections.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Connections.Abstractions" Version="7.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Features" Version="7.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="SavantBuffer.DbConnector" Version="1.6.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WDSClient\WDSClient.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TestResults\" />
+  </ItemGroup>
+
+</Project>

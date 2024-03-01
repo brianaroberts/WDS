@@ -1,0 +1,276 @@
+{
+  "Name": "Authorization",
+  "Description":  "", 
+  "DataOwner": "brianaroberts@live.com",
+  "Recordsets": [
+    {
+      "Name": "GetUser",
+      "ConnectionName": "MPSNIPER",
+      "CallType": 2,
+      "ReturnTypeString": "Json",
+      "Role": "Reader",
+      "Statement": "SELECT [edipi] ,[user_name] full_name, [name_first] first_name,[name_last] last_name,[mi] mid_name,[service],[rank],[title],[phone],[cent_org],[directorate],[division],[org] organization,[email],[display_name] FROM [MPSNiper].[dbo].[v_Personnel] WHERE edipi = @edipi",
+      "Cache": true,
+      "EndPointRequired": false,
+      "LogCallInDB": false,
+      "CacheTimeOut": 3600,
+      "Substitute": "GetUser2", 
+      "Parameters": [
+        {
+          "Name": "edipi",
+          "recordsetParameter": "edipi",
+          "required": true,
+          "regExMask": "^[0-9]{2,64}$",
+          "defaultValue": "",
+          "replaceWith": ""
+        }
+      ]
+    },
+    {
+      "Name": "SGetUser",
+      "ConnectionName": "Pandora",
+      "Role": "Reader",
+      "CallTypeString": "SQL",
+      "ReturnTypeString": "Json",
+      "Statement": "SELECT TOP 1 [ssanguid],[rootguid],[edipi],[ptc],[svc],[last_name],[first_name],[mid_name],[display_name],[title],[svc_branch],[rank],[phone],[email],[dir_id],[group],[division],[office],[rcd_cond_id],[is_retired] FROM [Pandora1].[dbo].[v_personnel] WHERE edipi like @edipi AND ptc like @ptc",
+      "Cache": false,
+      "EndPointRequired": false,
+      "LogCallInDB": false,
+      "CacheTimeOut": 0,
+      "Parameters": [
+        {
+          "Name": "edipi",
+          "recordsetParameter": "edipi",
+          "required": true,
+          "regExMask": "^\\d{10}(($)|(\\.))(($)|([[:upper:]]$)|((MIL)|(CIV)|(CTR)$))",
+          "defaultValue": "",
+          "replaceWith": "{edipi}%"
+        },
+        {
+          "Name": "ptc",
+          "recordsetParameter": "ptc",
+          "required": false,
+          "regExMask": "^[A-Z]$",
+          "defaultValue": "",
+          "replaceWith": "{ptc}%"
+        }
+      ]
+    },
+    {
+      "Name": "GetUser2",
+      "ConnectionName": "EDS",
+      "Role": "Reader",
+      "CallTypeString": "SQL",
+      "ReturnTypeString": "Json",
+      "Statement": "SELECT TOP 1 [uid] AS edipi, [last_name], [first_name], [initial], [display_name], [rank], [title], [work_phone] AS [phone], [work_email] AS [email], [company] AS [organization],[division], [office],[ptc], [employee_id] AS edipi_piv, [mod_dt] FROM dbo.EDS_Read WITH (NOLOCK) WHERE uid LIKE @edipi and ptc LIKE @ptc",
+      "EndPointRequired": false,
+      "Cache": false,
+      "LogCallInDB": false,
+      "CacheTimeOut": 0,
+      "Parameters": [
+        {
+          "Name": "edipi",
+          "recordsetParameter": "edipi",
+          "required": true,
+          "regExMask": "^\\d{10}(($)|(\\.))(($)|([[:upper:]]$)|((MIL)|(CIV)|(CTR)$))",
+          "defaultValue": "",
+          "replaceWith": "{edipi}%"
+        },
+        {
+          "Name": "ptc",
+          "recordsetParameter": "ptc",
+          "required": false,
+          "regExMask": "^[A-Z]$",
+          "defaultValue": "",
+          "replaceWith": "{ptc}%"
+        }
+      ]
+    },
+    {
+      "Name": "GetUserByEmail",
+      "ConnectionName": "Pandora",
+      "Role": "Reader",
+      "CallTypeString": "SQL",
+      "ReturnTypeString": "Json",
+      "Statement": "SELECT [ssanguid],[rootguid],[edipi],[ptc],[svc],[last_name],[first_name],[mid_name],[display_name],[title],[svc_branch],[rank],[phone],[email],[dir_id],[group],[division],[office],[rcd_cond_id],[is_retired] FROM [Pandora1].[dbo].[v_personnel] WHERE\t[email] LIKE @email",
+      "Cache": false,
+      "EndPointRequired": false,
+      "LogCallInDB": false,
+      "CacheTimeOut": 0,
+      "Parameters": [
+        {
+          "Name": "email",
+          "recordsetParameter": "email",
+          "required": true,
+          "regExMask": "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
+          "defaultValue": "",
+          "replaceWith": ""
+        }
+      ]
+    },
+    {
+      "Name": "EDSbyEmail",
+      "ConnectionName": "EDS",
+      "Role": "Reader",
+      "CallTypeString": "SQL",
+      "ReturnTypeString": "Json",
+      "Statement": "SELECT [uid] AS edipi, [last_name], [first_name], [initial], [display_name], [rank], [title], [work_phone] AS [phone], [work_email] AS [email], [company] AS [organization],[division], [office],[ptc], [employee_id] AS edipi_piv, [mod_dt] FROM dbo.EDS_Read WITH (NOLOCK) WHERE work_email = @email",
+      "EndPointRequired": false,
+      "Cache": false,
+      "LogCallInDB": false,
+      "CacheTimeOut": 0,
+      "Parameters": [
+        {
+          "Name": "email",
+          "recordsetParameter": "email",
+          "required": true,
+          "regExMask": "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
+          "defaultValue": "",
+          "replaceWith": ""
+        }
+      ]
+    },
+    {
+      "Name": "GetRoles",
+      "ConnectionName": "WDS",
+      "Role": "Reader",
+      "CallTypeString": "SQL",
+      "ReturnTypeString": "Json",
+      "Statement": "auth.get_UserRoles",
+      "Cache": false,
+      "OwnEndPointRequired": false,
+      "LogCallInDB": false,
+      "CacheTimeOut": 0,
+      "Parameters": [
+        {
+          "Name": "edipi",
+          "recordsetParameter": "edipi",
+          "required": true,
+          "regExMask": "^[0-9]{10}$",
+          "defaultValue": "",
+          "replaceWith": ""
+        },
+        {
+          "Name": "app_name",
+          "recordsetParameter": "app_name",
+          "required": true,
+          "regExMask": "^[A-Za-z0-9 ]{3,64}$",
+          "defaultValue": "",
+          "replaceWith": ""
+        }
+      ]
+    },
+    {
+      "Name": "GetClaims",
+      "ConnectionName": "WDS",
+      "Role": "Reader",
+      "CallTypeString": "StoredProc",
+      "ReturnTypeString": "Json",
+      "Statement": "auth.get_UserClaims",
+      "Cache": false,
+      "OwnEndPointRequired": false,
+      "LogCallInDB": false,
+      "CacheTimeOut": 0,
+      "Parameters": [
+        {
+          "Name": "edipi",
+          "recordsetParameter": "edipi",
+          "required": true,
+          "regExMask": "^[0-9]{10}$",
+          "defaultValue": "",
+          "replaceWith": ""
+        },
+        {
+          "Name": "app_name",
+          "recordsetParameter": "app_name",
+          "required": true,
+          "regExMask": "^[A-Za-z0-9 ]{3,64}$",
+          "defaultValue": "",
+          "replaceWith": ""
+        }
+      ]
+    },
+    {
+      "Name": "LogUserApplicationAccess",
+      "ConnectionName": "WDS",
+      "Role": "Reader",
+      "CallTypeString": "StoredProc",
+      "ReturnTypeString": "Json",
+      "Statement": "auth.add_UserAppAccess",
+      "Cache": false,
+      "OwnEndPointRequired": true,
+      "LogCallInDB": false,
+      "CacheTimeOut": 0,
+      "Parameters": [
+        {
+          "Name": "edipi",
+          "recordsetParameter": "edipi",
+          "required": true,
+          "regExMask": "^[0-9]{10}$",
+          "defaultValue": "",
+          "replaceWith": ""
+        },
+        {
+          "Name": "ptc",
+          "recordsetParameter": "app_id",
+          "required": true,
+          "regExMask": "^[A-Za-z]{1}$",
+          "defaultValue": "",
+          "replaceWith": ""
+        },
+        {
+          "Name": "app_name",
+          "recordsetParameter": "app_name",
+          "required": true,
+          "regExMask": "^[A-Za-z0-9 ]{3,64}$",
+          "defaultValue": "",
+          "replaceWith": ""
+        }
+      ]
+    },
+    {
+      "Name": "EDSbyLastName",
+      "ConnectionName": "EDS",
+      "Role": "Reader",
+      "CallTypeString": "StoredProc",
+      "ReturnTypeString": "Json",
+      "Statement": "dbo.EDSbyLastName",
+      "Cache": false,
+      "EndPointRequired": false,
+      "LogCallInDB": false,
+      "CacheTimeOut": 0,
+      "Parameters": [
+        {
+          "Name": "lastName",
+          "recordsetParameter": "lastname",
+          "required": true,
+          "regExMask": "^[A-z]{2,64}$",
+          "defaultValue": "",
+          "replaceWith": ""
+        }
+      ]
+    },
+    {
+      "Name": "EDSbyId",
+      "ConnectionName": "EDS",
+      "Role": "Reader",
+      "CallTypeString": "StoredProc",
+      "ReturnTypeString": "Json",
+      "Statement": "dbo.EDSbyId",
+      "EndPointRequired": false,
+      "Cache": false,
+      "LogCallInDB": false,
+      "CacheTimeOut": 0,
+      "Parameters": [
+        {
+          "Name": "dodId",
+          "recordsetParameter": "uid",
+          "required": true,
+          "regExMask": "^\\d{10}(($)|(\\.))(($)|([[:upper:]]$)|((MIL)|(CIV)|(CTR)$))",
+          "defaultValue": "",
+          "replaceWith": ""
+        }
+      ]
+    }
+  ]
+}

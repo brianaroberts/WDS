@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<script>
+
+    $(document).ready(function () {
+        CallQuery();
+    });
+
+    function CallQuery() {
+        var data = null;
+        $.get("https://adapter-staging.marms.js.smil.mil/MarmsApiService/api/cccams/query?q=(workProductType:=urn:us:gov:marms:1/Asset", function (response) {
+            data = response;
+        }).error(function () {
+            alert('Call failed');
+        });
+    }
+
+</script>

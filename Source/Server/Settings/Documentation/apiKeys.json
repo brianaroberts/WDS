@@ -1,0 +1,16 @@
+{
+  "ApiKeys": [
+
+    {
+      "Name":  "4InternalDoc", 
+      "Role": "RoleName",
+      "ApiEKey": "EncryptedAPIKey",
+      "UserKey": "APIKey",
+      "AllowedPlugins": "NONE",
+      "OwnerEmail": "brianaroberts@live.com",
+      "DateCreated": "1/5/2023",
+      "IP_Mask": "((l|L)ocal(h|H)ost)|127.0.0.1",
+      "ExpireDate": "10/20/2025"
+    }   
+  ]
+}

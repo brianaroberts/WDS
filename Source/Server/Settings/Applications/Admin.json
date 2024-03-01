@@ -1,0 +1,29 @@
+{
+  "Name": "Admin",
+  "Description": "",
+  "DataOwner": "brianaroberts@live.com",
+  "Recordsets": [
+    {
+      "Name": "GetAPIKey",
+      "ConnectionName": "WDS",
+      "Role": "Full",
+      "CallTypeString": "SQL",
+      "ReturnTypeString": "Json",
+      "Statement": "SELECT [API_Keys].[apikey_id], [API_Keys].[name],[encrypted_apiKey] ApiEKey,[host_mask] IP_Mask,[API_Keys].[description],[owner_email] OwnerEmail,[API_Keys].[create_dt], [API_Keys].[create_dt],[API_Keys].[mod_dt],[API_Keys].[expire_date],[API_Keys].[is_active] FROM [wds].[API_Keys]  WHERE [API_Keys].[name] = @keyName",
+      "Cache": false,
+      "EndPointRequired": false,
+      "LogCallInDB": false,
+      "CacheTimeOut": 0,
+      "Parameters": [
+        {
+          "Name": "keyName",
+          "recordsetParameter": "keyName",
+          "required": true,
+          "regExMask": "",
+          "defaultValue": "",
+          "replaceWith": ""
+        }
+      ]
+    }
+  ]
+}

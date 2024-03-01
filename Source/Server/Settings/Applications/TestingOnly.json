@@ -1,0 +1,163 @@
+{
+  "Name": "TestingOnly",
+  "DataOwner": "brianaroberts@live.com",
+  "Description": "This is a description",
+  "Recordsets": [
+    {
+      "Name": "FileStorage",
+      "ConnectionName": "WDSApplicationFileStorage",
+      "callType": 7,
+      "returnType": 2,
+      "Statement": "\\TestingOnly",
+      "Cache": false,
+      "CacheTimeOut": 0,
+      "EndPointRequired": true,
+      "LogCallInDB": false,
+      "Parameters": [],
+      "Role": "TestingOnly.Write"
+    },
+    {
+      "Name": "Countries",
+      "Substitute": "CountriesGood",
+      "ConnectionName": "TestingOnly",
+      "callType": 2,
+      "returnType": 2,
+      "Statement": "SELECT * FROM [tst].[Not_Countries]",
+      "Cache": false,
+      "CacheTimeOut": 0,
+      "EndPointRequired": false,
+      "LogCallInDB": false,
+      "Parameters": [],
+      "Role": "TestingOnly.Read"
+    },
+    {
+      "Name": "CountriesGood",
+      "ConnectionName": "TestingOnly",
+      "callType": 2,
+      "returnType": 2,
+      "Statement": "SELECT * FROM [tst].[Countries]",
+      "Cache": false,
+      "CacheTimeOut": 0,
+      "EndPointRequired": false,
+      "LogCallInDB": false,
+      "Parameters": [],
+      "Role": "TestingOnly.Read"
+    },
+    {
+      "Name": "States",
+      "ConnectionName": "TestingOnly",
+      "CallTypeString": null,
+      "callType": 2,
+      "ReturnTypeString": null,
+      "returnType": 1,
+      "Statement": "SELECT * FROM [tst].[states]",
+      "Cache": false,
+      "CacheTimeOut": 0,
+      "EndPointRequired": false,
+      "LogCallInDB": false,
+      "Parameters": [],
+      "Role": "TestingOnly.Read"
+    },
+    {
+      "Name": "DimDatesJson",
+      "ConnectionName": "TestingOnly",
+      "CallTypeString": null,
+      "callType": 2,
+      "DataDetailType": 2,
+      "ReturnTypeString": null,
+      "returnType": 1,
+      "Statement": "SELECT * FROM [tst].[DimDates] WHERE DayName = @dayName",
+      "Cache": false,
+      "CacheTimeOut": 0,
+      "EndPointRequired": false,
+      "LogCallInDB": false,
+      "Parameters": [
+        {
+          "name": "Day_Name",
+          "recordsetParameter": "dayName",
+          "required": true,
+          "regExMask": "",
+          "defaultValue": "Monday",
+          "replaceWith": ""
+        }
+      ],
+      "Role": "TestingOnly.Write"
+    },
+    {
+      "Name": "DimDatesCSV",
+      "ConnectionName": "TestingOnly",
+      "CallTypeString": null,
+      "callType": 2,
+      "DataDetailType": 2,
+      "ReturnTypeString": null,
+      "returnType": 2,
+      "Statement": "SELECT * FROM [tst].[DimDates] WHERE DayName = @dayName",
+      "Cache": false,
+      "CacheTimeOut": 0,
+      "EndPointRequired": false,
+      "LogCallInDB": false,
+      "Parameters": [
+        {
+          "name": "Day_Name",
+          "recordsetParameter": "dayName",
+          "required": false,
+          "regExMask": "",
+          "defaultValue": "Monday",
+          "replaceWith": ""
+        }
+      ],
+      "Role": "TestingOnly.Write"
+    },
+    {
+      "Name": "DimDatesXml",
+      "ConnectionName": "TestingOnly",
+      "CallTypeString": null,
+      "callType": 2,
+      "DataDetailType": 1,
+      "ReturnTypeString": null,
+      "returnType": 3,
+      "Statement": "SELECT * FROM [tst].[DimDates] WHERE DayName = @dayName",
+      "Cache": true,
+      "CacheTimeOut": 60,
+      "EndPointRequired": false,
+      "LogCallInDB": false,
+      "Parameters": [
+        {
+          "name": "Day_Name",
+          "recordsetParameter": "dayName",
+          "required": true,
+          "regExMask": "",
+          "defaultValue": "Monday",
+          "replaceWith": ""
+        }
+      ],
+      "Role": "TestingOnly.Write"
+    },
+    {
+      "Name": "EVehiclePopulation",
+      "ConnectionName": "TestingOnly",
+      "CallTypeString": null,
+      "callType": 2,
+      "DataDetailType": 1,
+      "ReturnTypeString": null,
+      "returnType": 1,
+      "Statement": "SELECT top(CONVERT(INT,@numRows)) * FROM [wds].[tst].[Electric_Vehicle_Population_Data]",
+      "Cache": false,
+      "CacheTimeOut": 60,
+      "EndPointRequired": false,
+      "LogCallInDB": true,
+      "Parameters": [
+        {
+          "name": "numRows",
+          "recordsetParameter": "numRows",
+          "required": true,
+          "regExMask": "(?<![-.])\\b[0-9]{1,5}\\b(?!\\.[0-9])",
+          "defaultValue": "100",
+          "replaceWith": ""
+        }
+      ],
+      "Role": "TestingOnly.Write"
+    }
+  ]
+ }
+ 

@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>WDS_Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{1ee4b36c-d66c-4536-88f7-485507ff8cb2}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath />
+    <RootNamespace>WDS</RootNamespace>
+    <AssemblyName>WDS</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="WDS" />
+    <Folder Include="WDS\Programability" />
+    <Folder Include="TST" />
+    <Folder Include="TST\Programability" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="WDS\Connections.sql" />
+    <Build Include="WDS\WDS.sql" />
+    <Build Include="WDS\APIKeys.sql" />
+    <Build Include="WDS\UserChanges_Log.sql" />
+    <Build Include="WDS\Recordsets.sql" />
+    <Build Include="WDS\Parameters.sql" />
+    <Build Include="WDS\RecordsetParameterMap.sql" />
+    <Build Include="WDS\Programability\add_Application.sql" />
+    <Build Include="WDS\Programability\get_UserClaims.sql" />
+    <Build Include="WDS\Programability\get_UserLastAccess.sql" />
+    <Build Include="WDS\Programability\get_UserRoles.sql" />
+    <Build Include="WDS\Programability\up_UserAppAccess.sql" />
+    <Build Include="WDS\ApplicationAccessLog.sql" />
+    <Build Include="WDS\ApplicationADRoles.sql" />
+    <Build Include="WDS\ApplicationRoles.sql" />
+    <Build Include="WDS\Applications.sql" />
+    <Build Include="WDS\Programability\add_Recordset.sql" />
+    <Build Include="WDS\Programability\add_Parameter.sql" />
+    <Build Include="WDS\Programability\up_Connection.sql" />
+    <Build Include="WDS\Programability\del_Application.sql" />
+    <Build Include="WDS\Programability\del_Recordset.sql" />
+    <Build Include="WDS\Programability\add_user.sql" />
+    <Build Include="WDS\Hosts.sql" />
+    <Build Include="WDS\Programability\add_host.sql" />
+    <Build Include="WDS\ApplicationHosts.sql" />
+    <Build Include="WDS\Programability\add_APIKey.sql" />
+    <Build Include="WDS\Programability\del_APIKey.sql" />
+    <Build Include="WDS\Programability\del_User.sql" />
+    <Build Include="WDS\Programability\add_ApplicationRole.sql" />
+    <Build Include="WDS\Programability\get_roles_frm_APIKey.sql" />
+    <Build Include="WDS\ApplicationAPIKeyRoles.sql" />
+    <Build Include="WDS\Programability\add_APIKeyApplicationRole.sql" />
+    <Build Include="WDS\ServiceVariables.sql" />
+    <Build Include="WDS\Programability\up_service_variable.sql" />
+    <Build Include="WDS\returnType_map.sql" />
+    <Build Include="WDS\returnType_details_map.sql" />
+    <Build Include="WDS\callType_map.sql" />
+    <Build Include="TST\Countries.sql" />
+    <Build Include="TST\DimDates.sql" />
+    <Build Include="TST\states.sql" />
+    <Build Include="TST\tst.sql" />
+    <Build Include="TST\Programability\reset_countries.sql" />
+    <Build Include="TST\Programability\reset_dimDates.sql" />
+    <Build Include="TST\Programability\reset_states.sql" />
+    <Build Include="TST\EVEHICLE_POP_DATA.sql" />
+    <Build Include="WDS\Programability\add_ApplicationLog.sql" />
+    <Build Include="WDS\application_log.sql" />
+    <Build Include="WDS\logLevelMap.sql" />
+    <Build Include="WDS\vApplicationLog.sql" />
+    <Build Include="WDS\Programability\add_ApplicationAccessLog.sql" />
+    <Build Include="WDS\Roles.sql" />
+    <Build Include="WDS\Programability\get_Recordsets.sql" />
+    <Build Include="WDS\vApplicationAccessLog.sql" />
+    <Build Include="WDS\vRecordsets.sql" />
+    <Build Include="WDS\vApplicationAPIKeyRoles.sql" />
+    <Build Include="WDS\vApplicationRoles.sql" />
+    <Build Include="WDS\vApplicationHosts.sql" />
+    <Build Include="WDS\vConnections.sql" />
+    <Build Include="WDS\vApplicationUserRoles.sql" />
+    <Build Include="WDS\vApplicationADRoles.sql" />
+    <Build Include="WDS\service_log.sql" />
+    <Build Include="WDS\Programability\get_Parameters.sql" />
+    <Build Include="WDS\get_Applications.sql" />
+    <Build Include="WDS\Programability\get_Connections.sql" />
+    <Build Include="WDS\parameter_example_values.sql" />
+    <Build Include="WDS\Programability\add_serviceLog.sql" />
+    <Build Include="WDS\Programability\add_parameterExampleValue.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="PostDeploymentScript.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="WDS_Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="WDS\ApplicationUserRoles.sql" />
+    <Build Include="WDS\UserClaims.sql" />
+    <Build Include="WDS\Users.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="PreDeploymentScript.sql" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,31 @@
+{
+  "Name": "[string] Application Name",
+  "Description": "[string] A brief description of the application",
+  "DataOwner": "[string] Owner of the application. Used to communicate issues/changes/authorizations",
+  "Recordsets": [
+    {
+      "Name": "[string] Name of the recordset, this is used in the call to retrieve the data. (i.e. AppName.RecordsetName)",
+      "ConnectionName": "[string] Name of the connection as it exists in either the connections.json or the [wds].[connections] table.",
+      "Role": "[string] Name of the role used to access this data. The available roles can be found in the [wds].[application_roles] table.",
+      "Substitute": "[string] Name of another recordset within this application that will be called if this one come back w/o rows or in error. NOTE: Must have the same parameter requirements",
+      "CallType": "[int] (0-NotSet, 1-StoredProc, 2-SQL, 3-GetDataFromFile, 4-FileUpdate, 5-DailyFileUpdate, 6-WebService) These are the supported calls within the WDS. This directs the action the WDS will take along with the paramters passed in",
+      "ReturnType": "[int] (0-NotSet, 1-Json, 2-CSV, 3-Xml, 4-Email) These are the return types supported by the WDS. The ones with * are still in development (future). For CSV format, make sure you dataset doesn't have comma's in the rs or you will run into issues. ",
+      "DataDetailType": "[int] (0-NotSet, 1-Default, 3-Simple)",
+      "Statement": "[string] Statement to be sent to the call type. Any parameter passed in will replace the like named. EX: EXEC stor_proc @param1, @param2",
+      "Cache": "(bool) Whether or not to cache the resuling recordset and used to return within the CacheTimeOut attribute.",
+      "CacheTimeOut": "(int) Cache Timeout in seconds before a record is pulled from the source again",
+      "EndPointRequired": "(bool) If this is set to true, it is not open to be called through a generic endpoint.",
+      "LogCallInDB": "(bool) Whether or not to log the call",
+      "Parameters": [
+        {
+          "Name": "[string] Parameter Name as passed into the WDS",
+          "recordsetParameter": "[string] Mapped name used to replace in Statement, this allows for seperation of call parameters to internal parameters",
+          "required": "(bool) wheher or not the parameter is required (from the user input) before the recordset will be executed.",
+          "regExMask": "[string] RegEx Mask, if the passed in value fails to match, then the call is terminated.",
+          "defaultValue": "[string] Default value that is used when no value is passed in. Default parameters will be sent to the call when no user input is supplied.",
+          "replaceWith": "[string] Replaces the passed in value with whatever is in the replaceWith field. This could be a string literal or a macro. Anything between {} is replaced with that paramter variable. Variables include all parameters passed into the call, db variables, and all system environmental varaiables."
+        }
+      ]
+    }
+  ]
+}

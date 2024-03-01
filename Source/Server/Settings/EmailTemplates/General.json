@@ -1,0 +1,7 @@
+﻿{
+  "subject": "Your Data is Ready ({DataName})",
+  "to": "",
+  "from": "WDS_NoReply@live.com",
+  "cc": "brianaroberts@live.com",
+  "message": "Your data is ready for viewing, please copy this link into your browser: {Link_To_Report}"
+}

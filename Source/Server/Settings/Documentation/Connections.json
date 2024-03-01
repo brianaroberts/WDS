@@ -1,0 +1,27 @@
+{
+  "Notes": "These three elements are needed to start the dataService and should not be removed. WDS will not run properly without them.",   
+  "Connections": 
+  [
+    {
+      "Name": "WDS",
+      "Type": "Database",
+      "Production": "Data Source=dbWDS;Initial Catalog=WDS;TrustServerCertificate=True;Trusted_Connection=true;MultipleActiveResultSets=true",
+      "Staging": "Data Source=dbStage;Initial Catalog=WDS;TrustServerCertificate=True;Trusted_Connection=true;MultipleActiveResultSets=true",
+      "Development": "Data Source=dbDev;Initial Catalog=WDS;TrustServerCertificate=True;Trusted_Connection=true;MultipleActiveResultSets=true"
+    },
+    {
+      "Name": "WDSLogging",
+      "Type": "FileSystem",
+      "Production": "c:\\WDS_Logs",
+      "Staging": "c:\\WDS_Logs",
+      "Development": "c:\\WDS_Logs"
+    },
+    {
+      "Name": "WDSCache",
+      "Type": "FileSystem",
+      "Production": "c:\\WDS_Cache",
+      "Staging": "c:\\WDS_Cache",
+      "Development": "c:\\WDS_Cache"
+    }
+  ]
+}

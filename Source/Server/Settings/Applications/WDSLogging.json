@@ -1,0 +1,143 @@
+{
+  "Name": "WDSLogging",
+  "Description": "",
+  "DataOwner": "brianaroberts@live.com",
+  "Recordsets": [
+    {
+      "Name": "ApplicationLog",
+      "ConnectionName": "WDS",
+      "Role": "WDS.Write",
+      "CallType": 1,
+      "ReturnType": 1,
+      "Statement": "[wds].[add_ApplicationLog]",
+      "LogCallInDB": false,
+      "EndPointRequired": false,
+      "Parameters": [
+        {
+          "name": "ClientHost",
+          "recordsetParameter": "clientHost",
+          "required": true,
+          "regExMask": "^[0-9a-zA-Z\\-\\.]{3,64}$",
+          "defaultValue": "",
+          "replaceWith": ""
+        },
+        {
+          "name": "ServerHost",
+          "recordsetParameter": "serverHost",
+          "required": false,
+          "regExMask": "",
+          "defaultValue": "^[0-9a-zA-Z\\-\\.]{3,64}$",
+          "replaceWith": "{COMPUTERNAME}"
+        },
+        {
+          "name": "application",
+          "recordsetParameter": "application",
+          "required": true,
+          "regExMask": "",
+          "defaultValue": "^[0-9a-zA-Z\\-]{3,64}$",
+          "replaceWith": ""
+        },
+        {
+          "name": "area",
+          "recordsetParameter": "logArea",
+          "required": true,
+          "regExMask": "",
+          "defaultValue": "^[0-9a-zA-Z\\-]{1,64}$",
+          "replaceWith": ""
+        },
+        {
+          "name": "logLevel",
+          "recordsetParameter": "logLevel",
+          "required": true,
+          "regExMask": "^[0-3]{1}$",
+          "defaultValue": "",
+          "replaceWith": ""
+        },
+        {
+          "name": "message",
+          "recordsetParameter": "message",
+          "required": true,
+          "regExMask": "",
+          "defaultValue": "",
+          "replaceWith": ""
+        }
+      ]
+    },
+    {
+      "Name": "UserAccessLog",
+      "ConnectionName": "WDS",
+      "Role": "WDS.Write",
+      "CallType": 1,
+      "ReturnType": 1,
+      "Statement": "[WDS].[add_ApplicationAccessLog]",
+      "LogCallInDB": false,
+      "EndPointRequired": true,
+      "Parameters": [
+        {
+          "name": "clientHost",
+          "recordsetParameter": "clientHost",
+          "required": true,
+          "regExMask": "^[0-9a-zA-Z\\-\\.]{3,64}$",
+          "defaultValue": "",
+          "replaceWith": ""
+        },
+        {
+          "name": "serverHost",
+          "recordsetParameter": "serverHost",
+          "required": false,
+          "regExMask": "",
+          "defaultValue": "^[0-9a-zA-Z\\-\\.]{3,64}$",
+          "replaceWith": "{COMPUTERNAME}"
+        },
+        {
+          "name": "application",
+          "recordsetParameter": "appName",
+          "required": true,
+          "regExMask": "",
+          "defaultValue": "^[0-9a-zA-Z\\-]{3,64}$",
+          "replaceWith": ""
+        },
+        {
+          "name": "recordset",
+          "recordsetParameter": "recordsetName",
+          "required": true,
+          "regExMask": "",
+          "defaultValue": "^[0-9a-zA-Z\\-]{1,64}$",
+          "replaceWith": ""
+        },
+        {
+          "name": "apiKey",
+          "recordsetParameter": "apiKey",
+          "required": false,
+          "regExMask": "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$",
+          "defaultValue": "",
+          "replaceWith": ""
+        },
+        {
+          "name": "edipi",
+          "recordsetParameter": "edipi",
+          "required": false,
+          "regExMask": "",
+          "defaultValue": "",
+          "replaceWith": ""
+        },
+        {
+          "name": "ptc",
+          "recordsetParameter": "ptc",
+          "required": false,
+          "regExMask": "",
+          "defaultValue": "",
+          "replaceWith": ""
+        },
+        {
+          "name": "parameters",
+          "recordsetParameter": "parameters",
+          "required": false,
+          "regExMask": "",
+          "defaultValue": "",
+          "replaceWith": ""
+        }
+      ]
+    }
+  ]
+}

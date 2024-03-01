@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="2981ca76-d531-4c61-a969-e2882b6b786b" ChangeDateTime="03/20/2023 20:37:51">
+    <Property Name="ElementName" Value="[dbo].[Hosts].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Hosts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="host_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="051d0cae-7f66-4f66-8edd-13fb0aa9ad9c" ChangeDateTime="03/20/2023 21:15:06">
+    <Property Name="ElementName" Value="[dbo].[ApplicationHosts].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ApplicationHosts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="app_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="39549730-77e9-423b-bcdf-3cd931a0c459" ChangeDateTime="03/27/2023 14:40:56">
+    <Property Name="ElementName" Value="[dbo].[returnType_map].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[returnType_map]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="returnType_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7c20d281-54cc-49bd-a9ab-06a5d1d266ff" ChangeDateTime="03/27/2023 15:15:18">
+    <Property Name="ElementName" Value="[wds].[recordsets].[call_type]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[wds].[recordsets]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="call_type_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="85e38743-73f5-4216-b514-8c62a7bec4aa" ChangeDateTime="03/27/2023 15:15:37">
+    <Property Name="ElementName" Value="[wds].[recordsets].[return_type]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[wds].[recordsets]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="returnType_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="df485624-7db3-4bcc-8daf-a5e9532f6c5a" ChangeDateTime="03/27/2023 15:23:14">
+    <Property Name="ElementName" Value="[wds].[recordsets].[call_type_id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[wds].[recordsets]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="callType_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4359be82-5646-46d7-9ed6-2352a1541cea" ChangeDateTime="03/28/2023 12:42:07">
+    <Property Name="ElementName" Value="[dbo].[EVEHICLE_POP_DATA].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EVEHICLE_POP_DATA]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="VIN_PART" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="98bda763-7272-4c4c-bf8d-859b9422f3e0" ChangeDateTime="03/28/2023 12:42:58">
+    <Property Name="ElementName" Value="[dbo].[EVEHICLE_POP_DATA].[Mkae]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EVEHICLE_POP_DATA]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Make" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="783666af-dec1-4ccf-ae0a-c906f26638c5" ChangeDateTime="03/30/2023 14:11:52">
+    <Property Name="ElementName" Value="[dbo].[service_log].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[service_log]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="log_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9908771b-3a57-47e6-9bd6-cbfd9edae898" ChangeDateTime="04/11/2023 09:56:58">
+    <Property Name="ElementName" Value="[wds].[user_claims].[is_approved]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[wds].[user_claims]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="is_active" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a6fd5c40-6f55-481a-8591-06506e3de556" ChangeDateTime="04/11/2023 09:58:18">
+    <Property Name="ElementName" Value="[wds].[user_claims].[mod_date]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[wds].[user_claims]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="mod_dt" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1f20d0d8-bf18-4303-9f03-d0593054ff88" ChangeDateTime="04/14/2023 11:26:01">
+    <Property Name="ElementName" Value="[dbo].[parameter_example_values].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[parameter_example_values]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="example_set_id" />
+  </Operation>
+</Operations>
